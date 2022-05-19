@@ -18,25 +18,25 @@ class BombaCombustivel:
     def __init__(self, tipoCombustivel, valorLitro, reservatorio, marcaCombustivel):
         self.tipoCombustivel = tipoCombustivel
         self.valorLitro = valorLitro
-        self.reservatorio = reservatorio
+        self._reservatorio = reservatorio
         self.marcaCombustivel = marcaCombustivel
         self.precoFinal = 0
 
     def __str__(self):
         return f'''A bomba está abastecendo {self.tipoCombustivel}, por R${self.valorLitro} o litro, 
-               temos ainda {self.reservatorio} litros da marca {self.marcaCombustivel} disponiveis no posto'''
+               temos ainda {self._reservatorio} litros, da marca {self.marcaCombustivel} disponiveis no posto'''
 
     def abastecePorValor(self, valor):
         valor = valor / self.valorLitro
         self.precoFinal = valor
         print(f"Voce abasteceu {valor:.2f} litros")
-        self.reservatorio -= valor
+        self._reservatorio -= valor
 
     def abastecePorLitro(self,litros):
         valorPorLitros = litros * self.valorLitro
         self.precoFinal = valorPorLitros
         print (f"Voce deve pagar R${valorPorLitros}")
-        self.reservatorio -= litros
+        self._reservatorio -= litros
 
     def alteraValor(self,valorBomba):
         self.valorLitro = valorBomba
@@ -47,8 +47,8 @@ class BombaCombustivel:
         print(f"O combustivel disponivel na bomba é {self.tipoCombustivel}")
 
     def alteraReservatorio(self,reserva):
-        self.reservatorio = reserva
-        print(f"A quantidade de combustivel disponivel na bomba é {self.reservatorio}")
+        self._reservatorio = reserva
+        print(f"A quantidade de combustivel disponivel na bomba é {self._reservatorio}")
 
     def alteraMarca (self, marca):
         self.marcaCombustivel = marca
